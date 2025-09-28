@@ -1,7 +1,7 @@
 Ejercicio - Despliegue en la Nube
 Agostina Timberio
-----------------------------------------------------------
-Levantar el LAB de AWS y lanzar una instancia de EC2 con
+
+Levantar el LAB de AWS y lanzar una instancia de EC2 con:
 -ubuntu
 -t2 medium
 -puertos 22 SSH Y TCP Custom 80
@@ -36,14 +36,14 @@ cd despliegue.nube.ids
 npm install
 -Levantar la App
 sudo node server.js
-----------------------------------------------------------
+
 Puerto cambiado del 3001 al 80
 cd Inventory/ -> me lleva al directorio root correcto
 nano server.js -> modificación del const PORT = 3001 a 80. Cambios guardados.
 sudo node server.js -> para correr la App
 
 NOTA: hubo que incorporar el Custom TCP en las reglas de seguridad de la instancia EC2. 
-----------------------------------------------------------
+
 Cambio de base de datos SQLite3 a MySQL2
 npm install mysql2 -> instalar el motor
 nano server.js -> cambios en la inicialización, se reemplazaron los tipos de datos y métoods para ejecutar consultas en la base de datos
