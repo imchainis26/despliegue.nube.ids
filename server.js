@@ -51,12 +51,17 @@ const sampleProducts = [
   ['Notebook Set', 'Office Supplies', 200, 8.99, 'Pack of 3 notebooks']
 ];
 
-sampleProducts.forEach(product => {
-  db.query(
-    'INSERT INTO products (name, category, quantity, price, description) VALUES (?, ?, ?, ?, ?)',
-    product,
-    (err) => { if (err) console.error(err); }
-  );
+db.query('SELECT COUNT(*) AS count FROM products', (err, results) => {
+  if (err) console.error(err);
+  else if (results[0].count === 0) {   // si la tabla está vacía
+    sampleProducts.forEach(product => {
+      db.query(
+        'INSERT INTO products (name, category, quantity, price, description) VALUES (?, ?, ?, ?, ?)',
+        product,
+        (err) => { if (err) console.error(err); }
+      );
+    });
+  }
 });
 
 // API Routes
