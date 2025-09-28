@@ -177,6 +177,10 @@ const ProductCard = ({ product, onEdit, onDelete }) => {
 
 // Dashboard Stats Component
 const DashboardStats = ({ stats }) => {
+  if (!stats) return null; // evita renderizar si stats no llegó
+
+  const totalValue = Number(stats.total_value || 0).toFixed(2);
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
       <div className="bg-white p-4 rounded-lg shadow">
@@ -211,7 +215,7 @@ const DashboardStats = ({ stats }) => {
           <i className="fas fa-dollar-sign text-yellow-500 text-2xl mr-3"></i>
           <div>
             <p className="text-sm text-gray-600">Total Value</p>
-            <p className="text-2xl font-bold">${(stats.total_value || 0).toFixed(2)}</p>
+            <p className="text-2xl font-bold">${totalValue}</p>
           </div>
         </div>
       </div>
