@@ -1,7 +1,41 @@
 Ejercicio - Despliegue en la Nube
 Agostina Timberio
 ----------------------------------------------------------
-
+Levantar el LAB de AWS y lanzar una instancia de EC2 con
+-ubuntu
+-t2 medium
+-puertos 22 SSH Y TCP Custom 80
+-generar el par de claves .pem
+Lanzar la instancia
+Abrir la terminal e ir a la ubicación donde se guardó el par de claves .pem
+Ejecutar ssh -i <NOMBRE DEL ARCHIVO .PEM> ubuntu@ec2-3-80-57-148.compute-1.amazonaws.com
+Luego, ejecutar los siguientes comandos:
+-Instalar Node.js y npm
+sudo apt update
+sudo apt install nodejs npm git -y
+node -v
+npm -v
+git --version
+-Instalar MySQL
+sudo apt install mysql-server -y
+sudo systemctl enable mysql
+sudo systemctl start mysql
+sudo mysql_secure_installation
+-Crear base de datos y usuario
+sudo mysql -> no pide contraseña porque se ingresa como root
+CREATE DATABASE db;
+CREATE USER 'miuser'@'localhost' IDENTIFIED BY 'Admin123!';
+GRANT ALL PRIVILEGES ON db.* TO 'miuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+-Clonar repositorio
+cd ~
+git clone https://github.com/imchainis26/despliegue.nube.ids.git
+-Instalar dependencias
+cd despliegue.nube.ids
+npm install
+-Levantar la App
+sudo node server.js
 ----------------------------------------------------------
 Puerto cambiado del 3001 al 80
 cd Inventory/ -> me lleva al directorio root correcto
