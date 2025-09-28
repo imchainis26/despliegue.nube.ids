@@ -17,10 +17,8 @@ node -v
 npm -v
 git --version
 -Instalar MySQL
+sudo apt update
 sudo apt install mysql-server -y
-sudo systemctl enable mysql
-sudo systemctl start mysql
-sudo mysql_secure_installation
 -Crear base de datos y usuario
 sudo mysql -> no pide contraseña porque se ingresa como root
 CREATE DATABASE db;
